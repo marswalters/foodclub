@@ -1,0 +1,22 @@
+{
+  "name": "foodclub",
+  "version": "0.0.1",
+  "description": "Neopets Food Club",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marswalters/foodclub.git"
+  },
+  "keywords": [
+    "Angular"
+  ],
+  "author": "Walters",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marswalters/foodclub/issues"
+  },
+  "homepage": "https://github.com/marswalters/foodclub#readme"
+}
