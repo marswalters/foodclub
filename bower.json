@@ -1,0 +1,19 @@
+{
+  "name": "foodclub",
+  "version": "0.0.1",
+  "homepage": "https://github.com/marswalters/foodclub",
+  "authors": [
+    "Walters"
+  ],
+  "description": "Neopets Food Club",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "Angular"
+  ],
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "angular": "~1.4.7"
+  }
+}
