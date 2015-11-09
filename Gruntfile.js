@@ -44,6 +44,21 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        stylus: {
+            options: {
+                "include css": true,
+                compress: false,
+                use: [
+                    function() {
+                        return require('autoprefixer-stylus')('last 2 versions');
+                    }
+                ]
+            },
+            build: {
+                src: 'src/styles/app.styl',
+                dest: 'build/app.css'
+            }
+        },
         watch: {
             options: {
                 livereload: true
@@ -60,13 +75,14 @@ module.exports = function(grunt) {
     };
 
     grunt.initConfig(taskConfig);
-    
+
     grunt.registerTask('default', [
         'build'
     ]);
 
     grunt.registerTask('build', 'Development build of the app', [
-        'copy'
+        'copy',
+        'stylus'
     ]);
 
     grunt.registerTask('dev', 'Build app and begin development', [
