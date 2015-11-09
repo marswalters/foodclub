@@ -1,6 +1,10 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
+    var bowerAndNpmScripts = [
+        'bower_components/angular/angular.js'
+    ];
+
     var taskConfig = {
         connect: {
             options: {
@@ -24,9 +28,26 @@ module.exports = function(grunt) {
                     dest: 'build/',
                     expand: true
                 }]
+            },
+            js: {
+                files: [{
+                    cwd: 'src',
+                    src: ['**/*.js'],
+                    dest: 'build/',
+                    expand: true
+                }]
+            },
+            packageJs: {
+                files: [{
+                    src: bowerAndNpmScripts,
+                    dest: 'build/'
+                }]
             }
         },
         watch: {
+            options: {
+                livereload: true
+            },
             html: {
                 files: ['src/**/*.html'],
                 tasks: ['copy:html']
