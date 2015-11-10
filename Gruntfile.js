@@ -59,6 +59,17 @@ module.exports = function(grunt) {
                 dest: 'build/app.css'
             }
         },
+        templateIndex: {
+            build: {
+                files: [{
+                    expand: true,
+                    cwd: 'build/',
+                    src: ['bower_components/**/*.js',
+                        'node_modules/**/*.js',
+                        '**/*.js']
+                }]
+            }
+        },
         watch: {
             options: {
                 livereload: true
@@ -68,11 +79,29 @@ module.exports = function(grunt) {
                 tasks: ['copy:html']
             },
             js: {
-                files: ['src/**/*.js'],
+                cwd: 'src',
+                files: ['**/*.js'],
+                dest: 'build/',
                 tasks: ['copy:js']
             }
         }
     };
+
+    grunt.registerMultiTask('templateIndex', function() {
+        var basePathRegExp = new RegExp('^(build\/)', 'g');
+        var scripts = this.filesSrc.map(function(scriptPath) {
+            return scriptPath.replace(basePathRegExp, '');
+        });
+        grunt.file.copy('src/index.html', 'build/index.html', {
+            process: function( contents, path ) {
+                return grunt.template.process( contents, {
+                    data: {
+                        scripts: scripts
+                    }
+                });
+            }
+        });
+    });
 
     grunt.initConfig(taskConfig);
 
@@ -82,7 +111,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', 'Development build of the app', [
         'copy',
-        'stylus'
+        'stylus',
+        'templateIndex'
     ]);
 
     grunt.registerTask('dev', 'Build app and begin development', [
