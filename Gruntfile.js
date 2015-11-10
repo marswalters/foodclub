@@ -6,6 +6,11 @@ module.exports = function(grunt) {
     ];
 
     var taskConfig = {
+        clean: {
+            build: {
+                src: ['build/']
+            }
+        },
         connect: {
             options: {
                 hostname: 'localhost',
@@ -24,7 +29,7 @@ module.exports = function(grunt) {
             html: {
                 files: [{
                     cwd: 'src/',
-                    src: ['**/*.html'],
+                    src: ['**/*.html', '!index.html'],
                     dest: 'build/',
                     expand: true
                 }]
