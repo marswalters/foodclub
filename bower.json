@@ -15,6 +15,7 @@
   "private": true,
   "devDependencies": {
     "angular": "~1.4.7",
-    "Blackjack": "~1.0.5"
+    "Blackjack": "~1.0.5",
+    "angular-animate": "~1.4.7"
   }
 }

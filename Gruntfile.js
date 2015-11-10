@@ -2,7 +2,8 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     var bowerAndNpmScripts = [
-        'bower_components/angular/angular.js'
+        'bower_components/angular/angular.js',
+        'bower_components/angular-animate/angular-animate.js'
     ];
 
     var taskConfig = {
@@ -69,7 +70,9 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'build/',
-                    src: ['bower_components/**/*.js',
+                    src: [
+                        'bower_components/angular/angular.js',
+                        'bower_components/**/*.js',
                         'node_modules/**/*.js',
                         '**/*.js']
                 }]
